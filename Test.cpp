@@ -2,7 +2,7 @@
 #include "ui_Sign_In.h"
 #include "log_in.h"
 
-/*************  ✨ Codeium Command ⭐  *************/
+
 /**
  * \brief Constructor for Sign_In class
  *
@@ -10,7 +10,7 @@
  *
  * \param parent The parent QWidget
  */
-/******  8bf4bf9b-7309-4533-a92d-ffaeaa2c4d2a  *******/
+
 Sign_In::Sign_In(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Sign_In)
@@ -25,6 +25,14 @@ Sign_In::Sign_In(QWidget *parent) :
     });
 }
 
+/**
+ * \brief Draws the background image on the Sign In window
+ *
+ * This function is used to draw the background image on the Sign In window.
+ * It is called when the window needs to be redrawn.
+ *
+ * \param event The QPaintEvent sent by the underlying system
+ */
 void Sign_In::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
@@ -33,6 +41,18 @@ void Sign_In::paintEvent(QPaintEvent *)
     painter.drawPixmap(0,0,pix);
 }
 
+/**
+ * \brief This function is the slot for the sign up button
+ *
+ * It is triggered when the sign up button is clicked. It connects to the database,
+ * checks if the user name already exist in the database, and if not, add the user
+ * information to the database. If the user name already exist, a message box will pop up.
+ *
+ * \sa void Sign_In::insertData()
+ * \sa void Sign_In::cleanLineEdit()
+ * \sa void Sign_In::connectDatabase()
+ * \sa void Sign_In::getInput()
+ */
 void Sign_In::on_signBtn_clicked()
 {
     connectDatabase();
@@ -84,6 +104,18 @@ void Sign_In::connectDatabase()
     myData.setDatabaseName("/Users/a233/Desktop/Car pool/dataBase/usersData.db");
 }
 
+/**
+ * \brief Insert user information into the database
+ *
+ * This function is used to insert the user information into the database.
+ * The user information includes user name, password, email and phone number.
+ * It will first get the input from the user, then insert the data into the database.
+ * If the data is inserted successfully, a message box will pop up to show the success message.
+ * If not, a message box will pop up to show the failure message.
+ *
+ * \sa void Sign_In::getInput()
+ * \sa void Sign_In::connectDatabase()
+ */
 void Sign_In::insertData()
 {
     getInput();
